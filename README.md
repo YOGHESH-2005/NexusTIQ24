@@ -142,7 +142,10 @@ The repository includes 9 realistic synthetic CSV scenarios in `data/scenarios/`
 pip install -r requirements.txt
 ```
 
-### Setting the Gemini API Key (Optional)
+### Setting the Gemini API Key
+
+Gemini API key is required for the full GenAI/RAG experience. A deterministic fallback is available for offline or degraded operation.
+
 ```bash
 # Windows PowerShell:
 $env:GEMINI_API_KEY="your-gemini-api-key-here"
@@ -150,7 +153,6 @@ $env:GEMINI_API_KEY="your-gemini-api-key-here"
 # Linux / macOS:
 export GEMINI_API_KEY="your-gemini-api-key-here"
 ```
-*(Note: System works gracefully even if `GEMINI_API_KEY` is unconfigured!)*
 
 ---
 
@@ -248,7 +250,7 @@ c:/Users/YOGHESH/Documents/Projects/NexusTIQ24/
 
 ## 14. Demo Video Link
 
-- **Demo Video Placeholder:** `https://youtube.com/watch?v=trusttrace-demo-placeholder`
+Demo video link will be added before final submission.
 
 ---
 
