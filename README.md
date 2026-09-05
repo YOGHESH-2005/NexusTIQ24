@@ -250,7 +250,7 @@ c:/Users/YOGHESH/Documents/Projects/NexusTIQ24/
 
 ## 14. Demo Video Link
 
-https://drive.google.com/file/d/1G0WN8lpTa1-Chn05WsUj0CYaJgVOjq6R/view?usp=drive_link
+https://www.loom.com/share/b64562a740de46db984d83352610aa98
 
 ---
 
