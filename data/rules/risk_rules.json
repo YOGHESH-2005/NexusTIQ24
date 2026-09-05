@@ -1,0 +1,41 @@
+{
+  "rules": [
+    {
+      "rule_id": "R01",
+      "rule_name": "Unusually Large Transfer",
+      "category": "Amount Deviation",
+      "severity": "HIGH",
+      "description": "Detects transactions whose amount significantly exceeds the customer's established baseline median and upper percentile range.",
+      "default_threshold_multiplier": 5.0,
+      "investigator_action": "Verify payee relationship, check transfer channel authorization, confirm customer intent."
+    },
+    {
+      "rule_id": "R02",
+      "rule_name": "New Payee Burst",
+      "category": "Velocity & Entity Risk",
+      "severity": "HIGH",
+      "description": "Detects multiple rapid transactions to a newly observed payee within a short timeframe.",
+      "default_window_hours": 24,
+      "default_min_txns": 2,
+      "investigator_action": "Inspect payee creation timestamp, verify if account was newly added, check cumulative payout amount."
+    },
+    {
+      "rule_id": "R03",
+      "rule_name": "Odd-Hours Activity",
+      "category": "Temporal Deviation",
+      "severity": "MEDIUM",
+      "description": "Detects high-value or unusual transactions conducted outside the customer's typical operating hours range.",
+      "default_start_hour": 8,
+      "default_end_hour": 22,
+      "investigator_action": "Check login IP/device location, assess if transaction coincides with authorized automated schedules or user travel."
+    },
+    {
+      "rule_id": "R04",
+      "rule_name": "Customer Behaviour Deviation",
+      "category": "Multi-Factor Pattern Shift",
+      "severity": "HIGH",
+      "description": "Detects transactions that simultaneously break multiple customer historical patterns (e.g. channel switch, amount spike, and timing anomaly).",
+      "investigator_action": "Review multi-factor profile shift, check for potential credential theft or SIM swap signals."
+    }
+  ]
+}

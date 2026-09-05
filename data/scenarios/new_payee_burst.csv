@@ -1,0 +1,7 @@
+transaction_id,date,time,description,payee,amount,channel,is_historical
+TXN-3001,2026-08-02,09:30:00,Coffee Shop,Starbucks,650.0,UPI,True
+TXN-3002,2026-08-10,14:15:00,Supermarket,More Retail,4100.0,Card,True
+TXN-3003,2026-08-20,18:00:00,Fuel Station,HPCL Petrol,2500.0,UPI,True
+TXN-3004,2026-09-04,22:02:00,Service Fee 1,QuickMoney Services,75000.0,IMPS,False
+TXN-3005,2026-09-04,22:08:00,Service Fee 2,QuickMoney Services,65000.0,IMPS,False
+TXN-3006,2026-09-04,22:15:00,Service Fee 3,QuickMoney Services,45000.0,IMPS,False

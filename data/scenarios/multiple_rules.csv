@@ -1,0 +1,7 @@
+transaction_id,date,time,description,payee,amount,channel,is_historical
+TXN-6001,2026-08-01,11:00:00,Routine Groceries,Nature Basket,3200.0,UPI,True
+TXN-6002,2026-08-10,15:30:00,Utility Payment,Airtel Broadband,1500.0,UPI,True
+TXN-6003,2026-08-20,17:00:00,Clothing Store,Zudio,2800.0,Card,True
+TXN-6004,2026-09-04,03:15:00,Emergency Transfer 1,QuickMoney Services,185000.0,IMPS,False
+TXN-6005,2026-09-04,03:22:00,Emergency Transfer 2,QuickMoney Services,75000.0,IMPS,False
+TXN-6006,2026-09-04,03:30:00,Emergency Transfer 3,QuickMoney Services,45000.0,IMPS,False

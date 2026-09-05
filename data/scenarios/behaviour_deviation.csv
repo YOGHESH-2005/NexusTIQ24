@@ -1,0 +1,6 @@
+transaction_id,date,time,description,payee,amount,channel,is_historical
+TXN-5001,2026-08-02,10:15:00,Morning Coffee,CCD,350.0,UPI,True
+TXN-5002,2026-08-08,14:00:00,Cab Ride,Uber India,650.0,UPI,True
+TXN-5003,2026-08-15,16:20:00,Department Store,Shoppers Stop,4500.0,UPI,True
+TXN-5004,2026-08-22,11:45:00,Pharmacy,Apollo Pharmacy,1200.0,UPI,True
+TXN-5005,2026-09-04,03:00:00,High Value Transfer,Apex Ventures,150000.0,IMPS,False

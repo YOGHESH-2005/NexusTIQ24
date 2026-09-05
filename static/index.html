@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrustTrace AI — Transaction Risk Investigation Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!-- Top App Navigation -->
+    <header class="top-nav">
+        <div class="nav-container">
+            <div class="brand">
+                <div class="logo-icon">🛡️</div>
+                <div class="brand-text">
+                    <h1>TrustTrace AI</h1>
+                    <span class="subtext">Transaction Risk Investigation Assistant | Track PS06</span>
+                </div>
+            </div>
+            <div class="header-badges">
+                <span class="badge badge-banking">BANKING FRAUD DESK</span>
+                <span class="badge badge-model">gemini-3.5-flash-lite</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+
+        <!-- Human-in-the-loop Warning Banner -->
+        <div class="hitl-banner">
+            <span class="hitl-icon">⚖️</span>
+            <div class="hitl-text">
+                <strong>Human-in-the-Loop Investigation Protocol:</strong> 
+                TrustTrace AI flags and explains evidence-grounded risk signals against customer baseline history. The system <em>never</em> declares guilt or fraud. Final judgement always belongs to the human investigator.
+            </div>
+        </div>
+
+        <!-- Section 1: Upload & Scenario Control Panel -->
+        <section class="control-panel card">
+            <div class="panel-header">
+                <h2>1. Transaction Upload & Demo Scenarios</h2>
+                <span class="badge badge-info">Step 1</span>
+            </div>
+
+            <!-- Demo Scenarios Switcher -->
+            <div class="scenarios-wrapper">
+                <label class="scenario-label">Quick Demo Scenarios:</label>
+                <div class="scenario-buttons" id="scenario-buttons">
+                    <button class="btn btn-scenario" onclick="loadScenario('normal_customer')">🟢 Normal Customer</button>
+                    <button class="btn btn-scenario" onclick="loadScenario('large_transfer')">🟠 Large Transfer (R01)</button>
+                    <button class="btn btn-scenario" onclick="loadScenario('new_payee_burst')">🚨 New Payee Burst (R02)</button>
+                    <button class="btn btn-scenario" onclick="loadScenario('odd_hours')">🌙 Odd Hours (R03)</button>
+                    <button class="btn btn-scenario" onclick="loadScenario('behaviour_deviation')">📈 Behaviour Deviation (R04)</button>
+                    <button class="btn btn-scenario" onclick="loadScenario('multiple_rules')">⚠️ Multiple Risk Signals</button>
+                    <button class="btn btn-scenario" onclick="loadScenario('incomplete_data')">❓ Incomplete Data</button>
+                    <button class="btn btn-scenario" onclick="loadScenario('contradictory_data')">⚡ Contradictory Data</button>
+                    <button class="btn btn-scenario" onclick="loadScenario('insufficient_history')">🔍 Insufficient History</button>
+                </div>
+            </div>
+
+            <!-- Upload Box -->
+            <div class="upload-dropzone" id="dropzone">
+                <input type="file" id="file-input" accept=".csv,.json" style="display:none;" onchange="handleFileSelect(event)">
+                <div class="dropzone-content" onclick="document.getElementById('file-input').click()">
+                    <span class="upload-icon">📁</span>
+                    <p class="upload-title">Click or Drop Transaction History File (CSV or JSON)</p>
+                    <p class="upload-sub">Includes support for multi-month customer records, timestamps, payees & channels</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loading Indicator -->
+        <div id="loading-state" class="loading-container hidden">
+            <div class="spinner"></div>
+            <p>Analyzing customer baseline statistics, executing risk rules, and retrieving grounded guidance...</p>
+        </div>
+
+        <!-- Results Display Container -->
+        <div id="analysis-results" class="results-container hidden">
+
+            <!-- Section 2: Executive Result Card -->
+            <section class="card result-hero-card" id="result-hero">
+                <div class="hero-header">
+                    <div class="status-indicator" id="status-pill">
+                        <span class="status-icon" id="status-icon">🛡️</span>
+                        <span class="status-title" id="status-title">ANALYSIS PENDING</span>
+                    </div>
+                    <div class="risk-badge-group">
+                        <span class="badge" id="risk-level-badge">Risk Level: Unknown</span>
+                        <span class="badge" id="rules-count-badge">0 Rules Triggered</span>
+                    </div>
+                </div>
+
+                <div class="hero-body">
+                    <h3>Executive Investigation Summary</h3>
+                    <p class="summary-text" id="summary-narrative"></p>
+
+                    <div class="recommended-action-box" id="action-box">
+                        <strong>Recommended Next Action:</strong>
+                        <p id="action-text"></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Customer Baseline & Metrics -->
+            <section class="card baseline-card">
+                <div class="panel-header">
+                    <h2>2. Customer Baseline Profile</h2>
+                    <span class="badge badge-neutral" id="baseline-confidence">Confidence: HIGH</span>
+                </div>
+                <div class="baseline-grid">
+                    <div class="metric-box">
+                        <span class="metric-label">Historical Records</span>
+                        <span class="metric-val" id="base-count">0</span>
+                    </div>
+                    <div class="metric-box">
+                        <span class="metric-label">Historical Median</span>
+                        <span class="metric-val" id="base-median">₹0.00</span>
+                    </div>
+                    <div class="metric-box">
+                        <span class="metric-label">Typical Amount Range</span>
+                        <span class="metric-val" id="base-range">₹0–₹0</span>
+                    </div>
+                    <div class="metric-box">
+                        <span class="metric-label">Active Operating Hours</span>
+                        <span class="metric-val" id="base-hours">08:00–22:00</span>
+                    </div>
+                    <div class="metric-box">
+                        <span class="metric-label">Primary Channels</span>
+                        <span class="metric-val" id="base-channels">UPI</span>
+                    </div>
+                    <div class="metric-box">
+                        <span class="metric-label">Avg Daily Txns</span>
+                        <span class="metric-val" id="base-daily">0.0</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Investigator Priority Ranking -->
+            <section class="card priority-card" id="priority-section">
+                <div class="panel-header">
+                    <h2>3. Investigator Priority List</h2>
+                    <span class="badge badge-info">Action Order</span>
+                </div>
+                <p class="section-desc">Transactions ranked by evidence severity and multi-rule convergence. Review in this order:</p>
+                <div class="priority-list" id="priority-list-container">
+                    <!-- Priority Items injected dynamically -->
+                </div>
+            </section>
+
+            <!-- Section 5: Risk Rules Triggered -->
+            <section class="card rules-card" id="rules-section">
+                <div class="panel-header">
+                    <h2>4. Risk Rules Triggered</h2>
+                    <span class="badge badge-warning" id="rules-count-header">0 Rules</span>
+                </div>
+                <div class="rules-grid" id="rules-grid-container">
+                    <!-- Rule cards injected dynamically -->
+                </div>
+            </section>
+
+            <!-- Section 6: Contradictions & Unknowns (Edge Cases) -->
+            <section class="card edge-card hidden" id="edge-section">
+                <div class="panel-header">
+                    <h2>5. Data Hygiene, Conflicts & Unknowns</h2>
+                    <span class="badge badge-danger">Attention Needed</span>
+                </div>
+                <div id="contradictions-container"></div>
+                <div id="unknowns-container"></div>
+            </section>
+
+            <!-- Section 7: Full Transaction History Table -->
+            <section class="card table-card">
+                <div class="panel-header">
+                    <h2>6. Transaction History Traceability Table</h2>
+                    <span class="badge badge-neutral" id="table-count-badge">0 Rows</span>
+                </div>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Txn ID</th>
+                                <th>Date & Time</th>
+                                <th>Description</th>
+                                <th>Payee</th>
+                                <th>Amount</th>
+                                <th>Channel</th>
+                                <th>Category</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transaction-rows">
+                            <!-- Rows injected dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- Modal for Detailed Citation / Inspection -->
+    <div id="evidence-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Transaction Evidence Inspection</h3>
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Content injected -->
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

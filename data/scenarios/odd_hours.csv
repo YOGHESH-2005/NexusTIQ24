@@ -1,0 +1,6 @@
+transaction_id,date,time,description,payee,amount,channel,is_historical
+TXN-4001,2026-08-01,09:00:00,Breakfast,South Tiffin,200.0,UPI,True
+TXN-4002,2026-08-05,13:00:00,Lunch,Bistro 9,1200.0,UPI,True
+TXN-4003,2026-08-12,17:30:00,Groceries,Reliance Fresh,3500.0,Card,True
+TXN-4004,2026-08-20,20:00:00,Dinner,Olive Bistro,2800.0,Card,True
+TXN-4005,2026-09-04,03:17:00,Late Night Remittance,Overseas Digital Ltd,120000.0,NetBanking,False

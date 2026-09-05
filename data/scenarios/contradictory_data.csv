@@ -1,0 +1,4 @@
+transaction_id,date,time,description,payee,amount,channel,is_historical,secondary_amount_record
+TXN-8001,2026-08-01,10:00:00,Salary Credit,Tech Global,50000.0,NEFT,True,50000.0
+TXN-8002,2026-08-15,14:30:00,Rent,House Owner,18000.0,NetBanking,True,18000.0
+TXN-8003,2026-09-04,16:00:00,Vendor Clearing,Unverified Supplier,50000.0,IMPS,False,5000.0

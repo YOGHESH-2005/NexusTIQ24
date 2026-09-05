@@ -1,0 +1,11 @@
+transaction_id,date,time,description,payee,amount,channel,is_historical
+TXN-1001,2026-08-01,09:15:00,Grocery Store,FreshMart,2500.0,UPI,True
+TXN-1002,2026-08-03,14:30:00,Electricity Bill,State Power Corp,4200.0,NetBanking,True
+TXN-1003,2026-08-05,11:20:00,Coffee Shop,Bean & Brew,450.0,UPI,True
+TXN-1004,2026-08-10,18:45:00,Fuel station,Bharat Petroleum,3100.0,Card,True
+TXN-1005,2026-08-15,10:10:00,Supermarket,FreshMart,5800.0,UPI,True
+TXN-1006,2026-08-20,16:00:00,Restaurant,Spice Garden,2200.0,UPI,True
+TXN-1007,2026-08-25,12:30:00,Mobile Recharge,Airtel Direct,799.0,UPI,True
+TXN-1008,2026-08-28,19:15:00,Bookstore,PageTurner Books,1500.0,Card,True
+TXN-1009,2026-09-01,10:00:00,Weekly Groceries,FreshMart,3400.0,UPI,False
+TXN-1010,2026-09-03,15:20:00,Dining out,Spice Garden,2800.0,UPI,False

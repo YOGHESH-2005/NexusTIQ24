@@ -1,0 +1,7 @@
+transaction_id,date,time,description,payee,amount,channel,is_historical
+TXN-2001,2026-08-01,10:00:00,Salary Deposit,TechCorp India,14200.0,NEFT,True
+TXN-2002,2026-08-05,11:30:00,Rent Payment,Landlord Sharma,15000.0,NetBanking,True
+TXN-2003,2026-08-12,15:45:00,Groceries,BigBasket,3500.0,UPI,True
+TXN-2004,2026-08-18,14:10:00,Utility Bill,BESCOM Electric,2800.0,UPI,True
+TXN-2005,2026-08-25,17:00:00,Shopping,Amazon India,8400.0,Card,True
+TXN-2006,2026-09-04,14:30:00,Urgent Transfer,Global Trading Co,185000.0,IMPS,False
